@@ -1,0 +1,15 @@
+{
+    "compilerOptions": { // Node.js를 사용하며 import/export를 원활히 하기 위함
+        "module": "commonjs",
+        "target": "ES2015", // 어떤 버전의 JS로 컴파일 할지, es6
+        "sourceMap": true, // 코드상의 위치를 기억하고 알려줌 >> 빌드 전의 어떤 파일과 라인에서 오류가 발생했는지 확인가능
+        "outDir": "dist" // 컴파일 결과물 위치
+    },
+    "include": [
+        "src/**/*"
+        //"index.ts"
+    ], //어떤 파일들이(우리가 만드는 TS파일들) 컴파일 과정에 포함되는지 배열로 체크
+    "exclude": [
+        "node_modules"
+    ] // 디폴트로 컴파일에서 제외해두는 것이 좋음 
+}

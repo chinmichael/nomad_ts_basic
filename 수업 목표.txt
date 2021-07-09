@@ -1,0 +1,53 @@
+Nomad Typescript >> 매우 간단한 블록체인 만들어보기
+
+Typescript : JS의 superset (전처리엔진 : 컴파일하면 JS가 됨)
+
+사용이유 : JS(사용이 쉽고 엄격한 규칙이 없고 유연함) >> 버그 등에 취약
+
+
+Start :
+0) 추천 설치 vscode 플러그인 : TSLint // Debugger for Chrom // HTML CSS Support // Vetur, Vue 3 Snippets // Visual Studio IntelliCode // 
+
+1)
+우선 npm init로 프로젝트 폴더에 package.json을 꾸리고
+npm --global install typescript 로 설치 (많은 프로젝트에 쓰일 것이므로 global 붙여도 됨)
+
+프로젝트 폴더에 tsconfig.json 생성 >> 컴파일 시 JS 변환할 지 알려주면서 옵션을 제공 (기본적인 tsconfig.json 파일 및 주석 확인)
+
+프로젝트 터미널에서 tsc 명령어 실행시 include에 세팅한 파일들이 컴파일된다.
+
+2)
+package.json의 scripts key를 설정하면 npm(혹은 yarn)의 명령어를 추가할 수 있다.
+
+예를 들어 npm start 명령어로 tsc 명령어를 실행한 뒤 node index.js로 노드 환경에서 index를 실행하고 싶다면 (node는 typescript 이해를 못함)
+
+{
+    ...
+    "scripts": {
+        "start": "node index.js",
+        "prestart": "tsc"
+    }
+    ...
+}
+
+
+3)
+만약 지속적으로 ts를 감시하면서 js 컴파일을 하게 할 경우 ts-watch를 설치
+npm install tsc-watch --save-dev (development dependency로 설치)
+
+>> 참고로 dependency는 앱 구동에 필요한 의존성 파일들이라면
+>> devDependency는 앱 개발 시에만 필요한 의존성 들이다.!!
+
+그리고 이제 이왕 하는 김에 빌드 파일을 둘 dist와 소스코드를 둘 src을 둔 뒤에
+
+이후 위의 스크립트를
+
+{
+    ...
+    "scripts": {
+        "start": "tsc-watch --onSuccess \" node dist/index.js\"" // 컴파일 onSuccess시 불러올 커맨드를 설정
+    }
+    ...
+}
+
+로 바꾼다. (물론 tsconfig에서 컴파일할 ts 파일도 src위치로 변경)
