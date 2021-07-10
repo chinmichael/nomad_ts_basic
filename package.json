@@ -7,9 +7,12 @@
   "license": "ISC",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsc-watch --onSuccess \" node dist/index.js\""
+    "start": "tsc-watch --onSuccess \" node dist/blockchain.js\""
   },
   "devDependencies": {
     "tsc-watch": "^4.4.0"
+  },
+  "dependencies": {
+    "crypto-js": "^4.0.0"
   }
 }
